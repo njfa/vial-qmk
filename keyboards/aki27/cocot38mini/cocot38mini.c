@@ -30,7 +30,7 @@ extern const pointing_device_driver_t pointing_device_driver;
 #endif
 
 #ifndef COCOT_CPI_OPTIONS
-#    define COCOT_CPI_OPTIONS { 200, 400, 800, 1600, 3200 }
+#    define COCOT_CPI_OPTIONS { 800, 900, 1000, 1100, 1200, 1400, 1600 }
 #    ifndef COCOT_CPI_DEFAULT
 #       define COCOT_CPI_DEFAULT 3
 #    endif
@@ -46,14 +46,14 @@ extern const pointing_device_driver_t pointing_device_driver;
 #    endif
 #endif
 #ifndef COCOT_SCROLL_DIV_DEFAULT
-#    define COCOT_SCROLL_DIV_DEFAULT 4
+#    define COCOT_SCROLL_DIV_DEFAULT 3
 #endif
 
 
 #ifndef COCOT_ROTATION_ANGLE
-#    define COCOT_ROTATION_ANGLE { -75, -60, -45, -30, -15, 0, 15, 30, 45, 60, 75 }
+#    define COCOT_ROTATION_ANGLE { -30, -20, -15, -10, -5, 0, 5, 10, 15, 20, 30 }
 #    ifndef COCOT_ROTATION_DEFAULT
-#       define COCOT_ROTATION_DEFAULT 3
+#       define COCOT_ROTATION_DEFAULT 5
 #    endif
 #endif
 #ifndef COCOT_ROTATION_DEFAULT
@@ -93,7 +93,7 @@ void pointing_device_init_kb(void) {
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
 
-    double rad = angle_array[cocot_config.rotation_angle] * (M_PI / 180) * -1;
+    double rad = (angle_array[cocot_config.rotation_angle] - 90) * (M_PI / 180) * -1;
     int8_t x_rev =  + mouse_report.x * cos(rad) - mouse_report.y * sin(rad);
     int8_t y_rev =  + mouse_report.x * sin(rad) + mouse_report.y * cos(rad);
 
@@ -107,10 +107,10 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
 
         // accumulate scroll
         if (cocot_config.scrl_inv) {
-            h_acm += x_rev * 1;
+            h_acm += x_rev * -1;
             v_acm += y_rev * -1;
         } else {
-            h_acm += x_rev * -1;
+            h_acm += x_rev * 1;
             v_acm += y_rev * 1;
         }
 
@@ -152,7 +152,7 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
 
 bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
     // xprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
-    
+
     if (!process_record_user(keycode, record)) return false;
 
     switch (keycode) {
@@ -174,7 +174,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
                 set_auto_mouse_enable(cocot_config.auto_mouse);
                 //auto_mouse_tg_off = !get_auto_mouse_enable();
             } // do nothing on key up
-            return false; // prevent further processing of keycode            
+            return false; // prevent further processing of keycode
     //*/
     }
 
@@ -188,7 +188,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
         cocot_config.scrl_div = (cocot_config.scrl_div + 1) % SCRL_DIV_SIZE;
         eeconfig_update_kb(cocot_config.raw);
     }
-    
+
     if (keycode == ROT_R15 && record->event.pressed) {
         cocot_config.rotation_angle = (cocot_config.rotation_angle + 1) % ANGLE_SIZE;
         eeconfig_update_kb(cocot_config.raw);
@@ -232,14 +232,14 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
         default:
             //rgblight_sethsv_range(HSV_RED, 0, 9);
             cocot_set_scroll_mode(false);
-            
+
             if (cocot_config.auto_mouse) {
                 set_auto_mouse_enable(true);
             } else {
                 //state = remove_auto_mouse_layer(state, false);
                 set_auto_mouse_enable(false);
             }
-            
+
             //set_auto_mouse_enable(true);
             //state = remove_auto_mouse_layer(state, false);
             //set_auto_mouse_enable(cocot_config.auto_mouse);
