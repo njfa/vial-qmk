@@ -16,7 +16,7 @@
 
 #include "quantum.h"
 #include <math.h>
-#include "cocot36plus.h"
+#include "picot_r40.h"
 #include "wait.h"
 #include "debug.h"
 #include <stdio.h>
@@ -76,6 +76,7 @@ uint16_t angle_array[] = COCOT_ROTATION_ANGLE;
 #define ANGLE_SIZE (sizeof(angle_array) / sizeof(uint16_t))
 
 
+
 void pointing_device_init_kb(void) {
     // set the CPI.
     pointing_device_set_cpi(cpi_array[cocot_config.cpi_idx]);
@@ -84,6 +85,7 @@ void pointing_device_init_kb(void) {
     //set_auto_mouse_layer(4);
     set_auto_mouse_enable(cocot_config.auto_mouse);
 }
+
 
 report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
     static float x_accumulator = 0.0;
@@ -178,7 +180,6 @@ report_mouse_t pointing_device_task_kb(report_mouse_t mouse_report) {
 
 
 
-
 bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
     // xprintf("KL: kc: %u, col: %u, row: %u, pressed: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed);
     
@@ -243,28 +244,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
 
     return true;
 }
-/*
-layer_state_t layer_state_set_kb(layer_state_t state) {
-    switch(get_highest_layer(state)){
-        case 1 ... 2:
-            //rgblight_sethsv_range(HSV_YELLOW, 0, 9);
-            cocot_set_scroll_mode(true);
-            break;
-        case 3 ... 7:
-            //rgblight_sethsv_range(HSV_CYAN, 0, 9);
-            cocot_set_scroll_mode(false);
-            set_auto_mouse_enable(true);
-            break;
-        default:
-            //rgblight_sethsv_range(HSV_RED, 0, 9);
-            cocot_set_scroll_mode(false);
-            set_auto_mouse_enable(true);
-            break;
-        }
-    //rgblight_set_effect_range( 9, 36);
-  return state;
-};
-*/
+
 
 layer_state_t layer_state_set_kb(layer_state_t state) {
     switch(get_highest_layer(remove_auto_mouse_layer(state, true))) {
@@ -289,10 +269,6 @@ layer_state_t layer_state_set_kb(layer_state_t state) {
                 //state = remove_auto_mouse_layer(state, false);
                 set_auto_mouse_enable(false);
             }
-            
-            //set_auto_mouse_enable(true);
-            //state = remove_auto_mouse_layer(state, false);
-            //set_auto_mouse_enable(cocot_config.auto_mouse);
             break;
         }
     //rgblight_set_effect_range( 9, 36);
@@ -333,127 +309,3 @@ void cocot_set_scroll_mode(bool mode) {
     cocot_config.scrl_mode = mode;
 }
 
-
-
-
-
-
-#ifdef RGB_MATRIX_ENABLE
-    led_config_t g_led_config = { {
-    // Key Matrix to LED Index
-        {  9,10,11,12,13,40,41,42,43,44 },
-        { 14,15,16,17,18,35,36,37,38,39 },
-        { 19,20,21,22,23,30,31,32,33,34 },
-        { NO_LED,24,25,26,NO_LED,NO_LED,27,28,29,NO_LED}
-    }, {
-    // LED Index to Physical Position
-        // Underglow
-        { 132,  10 }, { 180,  10 }, { 180,  50 }, { 132,  50 }, { 108,  50 }, { 84,  50 }, { 12,  50 }, { 12,  10 }, { 84,  10 },
-        // Per Key Backlight
-        // Left Side
-        {   0,   0 }, {  24,   0 }, {  48,   0 }, {  72,   0 }, {  96,   0 },
-        {   0,  20 }, {  24,  20 }, {  48,  20 }, {  72,  20 }, {  96,  20 },
-        {   0,  40 }, {  24,  40 }, {  48,  40 }, {  72,  40 }, {  96,  40 },
-                                    {  48,  60 }, {  72,  60 }, {  96,  60 },
-        // Right Side
-        { 120,  60 }, { 144,  60 }, { 168,  60 },
-        { 120,  40 }, { 144,  40 }, { 168,  40 }, { 192,  40 }, { 216,  40 },
-        { 120,  20 }, { 144,  20 }, { 168,  20 }, { 192,  20 }, { 216,  20 },
-        { 120,   0 }, { 144,   0 }, { 168,   0 }, { 192,   0 }, { 216,   0 }
-    }, {
-    // LED Index to Flag
-        2, 2, 2, 2, 2, 2, 2, 2, 2,
-        4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-        4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-        4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
-        4, 4, 4, 4, 4, 4
-} };
-#endif
-
-// OLED utility
-
-#ifdef OLED_ENABLE
-
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    return OLED_ROTATION_0;
-}
-
-
-static const char PROGMEM cocot_logo[] = {
-    0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E, 0x8F, 0x90, 0x91, 0x92, 0x93, 0x94,
-    0xA0, 0xA1, 0xA2, 0xA3, 0xA4, 0xA5, 0xA6, 0xA7, 0xA8, 0xA9, 0xAA, 0xAB, 0xAC, 0xAD, 0xAE, 0xAF, 0xB0, 0xB1, 0xB2, 0xB3, 0xB4,
-    0xC0, 0xC1, 0xC2, 0xC3, 0xC4, 0xC5, 0xC6, 0xC7, 0xC8, 0xC9, 0xCA, 0xCB, 0xCC, 0xCD, 0xCE, 0xCF, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4,
-    0};
-
-void render_logo(void) {
-    oled_write_P(cocot_logo, false);
-};
-
-
-
-void oled_write_layer_state(void) {
-
-    oled_write_P(PSTR("Layer"), false);
-    // int cpi = pointing_device_get_cpi();
-    int cpi = cpi_array[cocot_config.cpi_idx];
-    int scroll_div = scrl_div_array[cocot_config.scrl_div];
-    int angle_origin = angle_array[cocot_config.rotation_angle];
-    int angle;
-    if (angle_origin > 360) {
-        angle = angle_origin - 65536;
-    } else {
-        angle = angle_origin;
-    }
-    int lyr = get_highest_layer(layer_state);
-
-    char buf1[6];
-    char buf2[6];
-    char buf3[8];
-    char buf4[8];
-
-    snprintf(buf1, 6, "%4d", cpi);
-    snprintf(buf2, 6, "%1d", scroll_div);
-    snprintf(buf3, 8, "%2d", abs(angle));
-    snprintf(buf4, 8, "%1d", lyr);
-    
-    oled_write(buf4, false);
-    //oled_write_P(get_u8_str(get_highest_layer(layer_state), '0'), false);
-    
-    oled_write_P(PSTR("/"), false);
-        if (cocot_get_scroll_mode()){
-        oled_write_P(PSTR("S"), false);
-    } else{
-        oled_write_P(PSTR("C"), false);
-    }
-
-    oled_write_P(PSTR("/"), false);
-    if (get_auto_mouse_enable()){
-        oled_write_P(PSTR("Y"), false);
-    } else{
-        oled_write_P(PSTR("N"), false);
-    }
-    
-    oled_write_P(PSTR("/"), false);
-    oled_write(buf1, false);
-    oled_write_P(PSTR("/"), false);
-    
-    oled_write(buf2, false);
-
-    oled_write_P(PSTR("/"), false);
-    if (angle < 0) {
-        oled_write_P(PSTR("-"), false);
-    } else {
-        oled_write_P(PSTR(" "), false);
-    }
-    oled_write(buf3, false);
-}
-
-
-bool oled_task_user(void) {
-    render_logo();
-    oled_write_layer_state();
-    return false;
-}
-
-
-#endif
