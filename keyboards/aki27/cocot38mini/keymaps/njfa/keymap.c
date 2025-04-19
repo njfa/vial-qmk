@@ -19,6 +19,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdio.h>
 #include "quantum.h"
 
+#include "keymap_japanese.h"
+
 #define MS_BTN1 KC_MS_BTN1
 #define MS_BTN2 KC_MS_BTN2
 #define MS_BTN3 KC_MS_BTN3
@@ -47,21 +49,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         /* */         /* */ LCTL_T(KC_LNG1), LT(1,KC_SPC), LT(5,KC_ESC), KC_LGUI, MS_BTN1, KC_BSPC, LT(2, KC_ENT), LSFT_T(KC_LNG2)
     ),
     [1] = LAYOUT(
-        KC_EXLM,      KC_AT, KC_HASH, KC_DLR,  KC_PERC, /* */    /* */    KC_PIPE, KC_AMPR,      KC_ASTR, KC_GRV,  KC_TILD,
-        KC_1,         KC_2,  KC_3,    KC_4,    KC_5,    /* */    /* */    KC_PLUS, KC_EQL,       KC_MINS, KC_CIRC, _______,
-        LSFT_T(KC_6), KC_7,  KC_8,    KC_9,    KC_0,    /* */    /* */    KC_BSLS, KC_UNDS,      _______, _______, _______,
+        JP_EXLM,      JP_AT, JP_HASH, JP_DLR,  JP_PERC, /* */    /* */    JP_PIPE, JP_AMPR,      JP_ASTR, JP_GRV,  JP_TILD,
+        JP_1,         JP_2,  JP_3,    JP_4,    JP_5,    /* */    /* */    JP_PLUS, JP_EQL,       JP_MINS, JP_CIRC, _______,
+        LSFT_T(JP_6), JP_7,  JP_8,    JP_9,    JP_0,    /* */    /* */    JP_BSLS, JP_UNDS,      _______, _______, _______,
         /* */         /* */  _______, _______, _______, _______, _______, KC_DEL,  _______, _______
     ),
     [2] = LAYOUT(
-        KC_EXLM,         KC_AT,   KC_HASH, KC_DLR,       KC_PERC, /* */    /* */    KC_PIPE, KC_AMPR, KC_ASTR,       KC_GRV,       KC_TILD,
-        KC_COLN,         KC_LCBR, KC_LBRC, KC_LPRN,      KC_DQT,  /* */    /* */    KC_LEFT, KC_DOWN, KC_UP,         KC_RGHT,      _______,
-        LSFT_T(KC_SCLN), KC_RCBR, KC_RBRC, KC_QUOT,      KC_RPRN, /* */    /* */    KC_HOME, KC_END,  LSFT(KC_COMM), LSFT(KC_DOT), _______,
+        JP_EXLM,         JP_AT,   JP_HASH, JP_DLR,       JP_PERC, /* */    /* */    JP_PIPE, JP_AMPR, JP_ASTR,       JP_GRV,       JP_TILD,
+        JP_COLN,         JP_LCBR, JP_LBRC, JP_LPRN,      JP_DQUO, /* */    /* */    KC_LEFT, KC_DOWN, KC_UP,         KC_RGHT,      _______,
+        LSFT_T(JP_SCLN), JP_RCBR, JP_RBRC, JP_QUOT,      JP_RPRN, /* */    /* */    KC_HOME, KC_END,  LSFT(KC_COMM), LSFT(KC_DOT), _______,
         /* */            /* */    _______, LT(3,KC_SPC), KC_ESC,  _______, _______, _______, _______, _______
     ),
     [3] = LAYOUT(
-        KC_EXLM,      KC_AT, KC_HASH,         KC_DLR, KC_PERC, /* */    /* */    KC_PIPE, KC_AMPR, KC_ASTR, KC_GRV,  KC_TILD,
-        KC_1,         KC_2,  KC_3,            KC_4,   KC_5,    /* */    /* */    KC_PLUS, KC_EQL,  KC_MINS, KC_CIRC, LCTL_T(KC_TAB),
-        LSFT_T(KC_6), KC_7,  KC_8,            KC_9,   KC_0,    /* */    /* */    KC_BSLS, KC_UNDS, KC_COMM, KC_DOT,  KC_SLSH,
+        JP_EXLM,      JP_AT, JP_HASH,         JP_DLR, JP_PERC, /* */    /* */    JP_PIPE, JP_AMPR, JP_ASTR, JP_GRV,  JP_TILD,
+        JP_1,         JP_2,  JP_3,            JP_4,   JP_5,    /* */    /* */    JP_PLUS, JP_EQL,  JP_MINS, JP_CIRC, LCTL_T(KC_TAB),
+        LSFT_T(JP_6), JP_7,  JP_8,            JP_9,   JP_0,    /* */    /* */    JP_BSLS, JP_UNDS, KC_COMM, KC_DOT,  KC_SLSH,
         /* */         /* */  LCTL_T(KC_LNG1), KC_SPC, KC_ESC,  KC_LGUI, MS_BTN1, KC_DEL,  KC_ENT,  LSFT_T(KC_LNG2)
     ),
     [4] = LAYOUT(
