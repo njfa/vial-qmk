@@ -35,3 +35,21 @@ jobs:
       run: |
         git config --global --add safe.directory $(pwd)
         qmk compile -kb "${{ matrix.keyboard }}" -km "${{ matrix.keymap }}"
+
+    - name: List firmware artifacts
+      run: |
+        find .build -maxdepth 1 -type f \( -name '*.bin' -o -name '*.hex' -o -name '*.uf2' \) -print
+        find . -maxdepth 1 -type f \( -name '*.bin' -o -name '*.hex' -o -name '*.uf2' \) -print
+
+    - name: Upload firmware artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: cocot38mini-${{ matrix.keymap }}
+        path: |
+          .build/*.bin
+          .build/*.hex
+          .build/*.uf2
+          *.bin
+          *.hex
+          *.uf2
+        if-no-files-found: error
