@@ -45,8 +45,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
         KC_Q,         KC_W, KC_E,            KC_R,         KC_T,         /* */    /* */    KC_Y,    KC_U,         KC_I,    KC_O,   KC_P,
         KC_A,         KC_S, KC_D,            KC_F,         KC_G,         /* */    /* */    KC_H,    KC_J,         KC_K,    KC_L,   LCTL_T(KC_TAB),
-        LSFT_T(KC_Z), KC_X, KC_C,            KC_V,         KC_B,         /* */    /* */    KC_N,    KC_M,         KC_COMM, KC_DOT, KC_SLSH,
-        /* */         /* */ LCTL_T(KC_LNG1), LT(1,KC_SPC), LT(5,KC_ESC), KC_LGUI, MS_BTN1, KC_BSPC, LT(2, KC_ENT), LSFT_T(KC_LNG2)
+        LSFT_T(KC_Z), KC_X, KC_C,            KC_V,         KC_B,         /* */    /* */    KC_N,    KC_M,         KC_COMM, KC_DOT, RSFT_T(KC_SLSH),
+        /* */         /* */ LCTL_T(KC_LNG1), LT(1,KC_SPC), LT(5,KC_ESC), KC_LGUI, MS_BTN1, KC_BSPC, LT(2, KC_ENT), LT(4, KC_LNG2)
     ),
     [1] = LAYOUT(
         JP_EXLM,      JP_AT, JP_HASH, JP_DLR,  JP_PERC, /* */    /* */    JP_PIPE, JP_AMPR,      JP_ASTR, JP_GRV,  JP_TILD,
@@ -64,25 +64,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         JP_EXLM,      JP_AT, JP_HASH,         JP_DLR, JP_PERC, /* */    /* */    JP_PIPE, JP_AMPR, JP_ASTR, JP_GRV,  JP_TILD,
         JP_1,         JP_2,  JP_3,            JP_4,   JP_5,    /* */    /* */    JP_PLUS, JP_EQL,  JP_MINS, JP_CIRC, LCTL_T(KC_TAB),
         LSFT_T(JP_6), JP_7,  JP_8,            JP_9,   JP_0,    /* */    /* */    JP_BSLS, JP_UNDS, KC_COMM, KC_DOT,  KC_SLSH,
-        /* */         /* */  LCTL_T(KC_LNG1), KC_SPC, KC_ESC,  KC_LGUI, MS_BTN1, KC_DEL,  KC_ENT,  LSFT_T(KC_LNG2)
+        /* */         /* */  LCTL_T(KC_LNG1), KC_SPC, KC_ESC,  KC_LGUI, MS_BTN1, KC_DEL,  KC_ENT,  LT(4, KC_LNG2)
     ),
     [4] = LAYOUT(
-        XXXXXXX, SCRL_SW, MS_BTN4, MS_BTN5, XXXXXXX, /* */    /* */    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        KC_LCTL, CPI_SW,  MS_BTN3, MS_BTN2, XXXXXXX, /* */    /* */    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-        KC_LSFT, SCRL_IN, ROT_L15, ROT_R15, XXXXXXX, /* */    /* */    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   /* */    /* */ KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,
+        _______, _______, _______, _______, _______, /* */    /* */ MS_BTN2, MS_BTN3, _______, _______, _______,
+        _______, _______, _______, _______, _______, /* */    /* */ MS_BTN4, MS_BTN5, _______, _______, _______,
         /* */    /* */    _______, _______, _______, _______, MS_BTN1, _______, _______, _______
     ),
     [5] = LAYOUT(
-        KC_F1,  KC_F2,      KC_F3,      KC_F4,        KC_F5,      /* */        /* */    KC_F6,      KC_F7,        KC_F8,      KC_F9,      KC_F10,
-        KC_F11, LALT(KC_S), LALT(KC_D), LALT(KC_F),   LALT(KC_G), /* */        /* */    LALT(KC_H), LALT(KC_J),   LALT(KC_K), LALT(KC_L), _______,
-        KC_F12, LALT(KC_X), LALT(KC_C), LALT(KC_V),   LALT(KC_B), /* */        /* */    LALT(KC_N), LALT(KC_M),   XXXXXXX,    XXXXXXX,    _______,
-        /* */   /* */       _______,    LALT(KC_SPC), _______,    LCA(KC_DEL), _______, TT(6),      LALT(KC_ENT), KC_LALT
+        KC_F11,     LALT(KC_W), LALT(KC_E), LALT(KC_R), LALT(KC_T), /* */    /* */ LALT(KC_Y), LALT(KC_U),   LALT(KC_I), LALT(KC_O), KC_F12,
+        LALT(KC_A), LALT(KC_S), LALT(KC_D), LALT(KC_F), LALT(KC_G), /* */    /* */ LALT(KC_H), LALT(KC_J),   LALT(KC_K), LALT(KC_L), _______,
+        LSFT(KC_Z), LALT(KC_X), LALT(KC_C), LALT(KC_V), LALT(KC_B), /* */    /* */ LALT(KC_N), LALT(KC_M),   KC_COMM,    KC_DOT,     _______,
+        /* */   /* */       _______, _______, _______, TT(KC_6), _______, _______, LALT(KC_ENT), _______
     ),
     [6] = LAYOUT(
         QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /* */    /* */    RGB_TOG, RGB_MOD, RGB_RMOD, RGB_HUI, RGB_HUD,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /* */    /* */    XXXXXXX, XXXXXXX, XXXXXXX,  RGB_SAI, RGB_SAD,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /* */    /* */    XXXXXXX, XXXXXXX, XXXXXXX,  RGB_VAI, RGB_VAD,
-        /* */    /* */    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /* */    /* */    XXXXXXX, ROT_L15, ROT_R15,  RGB_SAI, RGB_SAD,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /* */    /* */    XXXXXXX, CPI_SW,  SCRL_SW,  RGB_VAI, RGB_VAD,
+        /* */    /* */    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LCA(KC_DEL), XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [7] = LAYOUT(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
