@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F11,     LALT(KC_W), LALT(KC_E), LALT(KC_R), LALT(KC_T), /* */    /* */ LALT(KC_Y), LALT(KC_U),   LALT(KC_I), LALT(KC_O), KC_F12,
         LALT(KC_A), LALT(KC_S), LALT(KC_D), LALT(KC_F), LALT(KC_G), /* */    /* */ LALT(KC_H), LALT(KC_J),   LALT(KC_K), LALT(KC_L), _______,
         LSFT(KC_Z), LALT(KC_X), LALT(KC_C), LALT(KC_V), LALT(KC_B), /* */    /* */ LALT(KC_N), LALT(KC_M),   KC_COMM,    KC_DOT,     _______,
-        /* */   /* */       _______, _______, _______, TT(KC_6), _______, _______, LALT(KC_ENT), _______
+        /* */   /* */       _______, _______, _______, TT(6), _______, _______, LALT(KC_ENT), _______
     ),
     [6] = LAYOUT(
         QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, /* */    /* */    RGB_TOG, RGB_MOD, RGB_RMOD, RGB_HUI, RGB_HUD,
