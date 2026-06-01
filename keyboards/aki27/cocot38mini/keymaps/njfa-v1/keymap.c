@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [1] = LAYOUT(
         JP_EXLM,      JP_AT, JP_HASH, JP_DLR,  JP_PERC, /* */    /* */    JP_PIPE, JP_AMPR,      JP_ASTR, JP_GRV,  JP_TILD,
-        JP_1,         JP_2,  JP_3,    JP_4,    JP_5,    /* */    /* */    JP_PLUS, JP_EQL,       JP_MINS, JP_CIRC, _______,
+        JP_1,         JP_2,  JP_3,    JP_4,    JP_5,    /* */    /* */    KC_PPLS, JP_EQL,       JP_MINS, JP_CIRC, _______,
         LSFT_T(JP_6), JP_7,  JP_8,    JP_9,    JP_0,    /* */    /* */    JP_BSLS, JP_UNDS,      _______, _______, _______,
         /* */         /* */  _______, _______, _______, _______, _______, KC_DEL,  _______, _______
     ),
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [3] = LAYOUT(
         JP_EXLM,      JP_AT, JP_HASH,         JP_DLR, JP_PERC, /* */    /* */    JP_PIPE, JP_AMPR, JP_ASTR, JP_GRV,  JP_TILD,
-        JP_1,         JP_2,  JP_3,            JP_4,   JP_5,    /* */    /* */    JP_PLUS, JP_EQL,  JP_MINS, JP_CIRC, LCTL_T(KC_TAB),
+        JP_1,         JP_2,  JP_3,            JP_4,   JP_5,    /* */    /* */    KC_PPLS, JP_EQL,  JP_MINS, JP_CIRC, LCTL_T(KC_TAB),
         LSFT_T(JP_6), JP_7,  JP_8,            JP_9,   JP_0,    /* */    /* */    JP_BSLS, JP_UNDS, KC_COMM, KC_DOT,  KC_SLSH,
         /* */         /* */  LCTL_T(KC_LNG1), KC_SPC, KC_ESC,  KC_LGUI, MS_BTN1, KC_DEL,  KC_ENT,  LT(4, KC_LNG2)
     ),
